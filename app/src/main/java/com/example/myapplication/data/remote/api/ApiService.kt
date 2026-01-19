@@ -1,5 +1,7 @@
 package com.example.myapplication.data.remote.api
 
+import OtpRequest
+import ResetPasswordRequest
 import com.example.myapplication.data.remote.models.requests.UpdateProfileRequest
 import com.example.myapplication.data.remote.models.responses.UpdateProfileResponse
 import com.example.myapplication.view.screen.home.MatchResponse
@@ -15,6 +17,11 @@ import retrofit2.http.Path
 interface ApiService {
     @POST(ApiEndPoints.REGISTER)
     suspend fun register(@Body request: SignupRequest): Response<Unit>
+    @POST(ApiEndPoints.SENT_OTP_EMAIL)
+    suspend fun sentOtpEmail(@Body request: OtpRequest): Response<Unit>
+
+    @PATCH(ApiEndPoints.RESET_PASSWORD)
+    suspend fun resetPassword(@Body request: ResetPasswordRequest): Response<Unit>
     @POST(ApiEndPoints.LOGIN)
     suspend fun login(@Body request: LoginRequest): Response<LoginResponse>
 
