@@ -21,6 +21,7 @@ import com.example.myapplication.viewmodel.LoginViewModel
 fun LoginScreen(
     onLoginSuccess: () -> Unit,
     onSignupClick: () -> Unit,
+    onForgotPasswordClick: () -> Unit, // Added for Forgot Password navigation
     viewModel: LoginViewModel = viewModel() // Injects the ViewModel
 ) {
     // Collecting state from ViewModel
@@ -97,6 +98,22 @@ fun LoginScreen(
 
             Spacer(modifier = Modifier.height(32.dp))
 
+            Box(
+                modifier = Modifier.fillMaxWidth(),
+                contentAlignment = Alignment.CenterEnd
+            ) {
+                TextButton(
+                    onClick = onForgotPasswordClick,
+                    contentPadding = PaddingValues(0.dp)
+                ) {
+                    Text(
+                        text = "Forgot Password?",
+                        fontSize = 14.sp,
+                        fontWeight = FontWeight.SemiBold,
+                        color = MaterialTheme.colorScheme.primary
+                    )
+                }
+            }
             // Login Button
             Button(
                 onClick = { viewModel.login() },

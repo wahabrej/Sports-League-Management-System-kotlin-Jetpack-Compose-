@@ -14,4 +14,6 @@ object Routes {
     const val AllMATCHSCREEN = "AllMatchScreen"
     const val PROFILE = "profile"
     const val EDIT_PROFILE = "edit_profile"
+    const val OTP_SEND = "otp_send"
+    const val RESET_PASSWORD = "reset_password"
     const val MATCH_DETAIL = "match_detail/{matchId}"}
