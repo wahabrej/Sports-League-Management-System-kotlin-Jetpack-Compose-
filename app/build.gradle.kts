@@ -38,7 +38,6 @@ android {
         compose = true
     }
 
-    // packaging ব্লক — সব duplicate ফাইল এখানে হ্যান্ডেল করা হচ্ছে
     packaging {
         resources {
             excludes += setOf(
