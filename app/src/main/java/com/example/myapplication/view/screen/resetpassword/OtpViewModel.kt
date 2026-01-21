@@ -49,6 +49,7 @@ class AuthViewModel : ViewModel() {
                     password = newPassword,
                     otp = otpCode
                 )
+
                 val response = RetrofitClient.api.resetPassword(request)
                 if (response.isSuccessful) {
                     _uiState.update { it.copy(isLoading = false, isOtpVerified = true) }
