@@ -12,6 +12,7 @@ import com.example.myapplication.ui.screens.*
 import com.example.myapplication.ui.screens.auth.ResetPasswordScreen
 import com.example.myapplication.ui.screens.match.MatchDetailScreen
 import com.example.myapplication.ui.screens.profile.EditProfileScreen
+import com.example.myapplication.view.screen.signup.SignupScreen
 import com.example.myapplication.viewmodel.AuthViewModel
 import com.example.myapplication.viewmodel.MatchViewModel
 import com.example.myapplication.viewmodel.ProfileViewModel

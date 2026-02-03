@@ -1,4 +1,5 @@
-package com.example.myapplication.ui.screens
+package com.example.myapplication.view.screen.signup
+
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.text.KeyboardOptions
@@ -12,7 +13,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.myapplication.viewmodel.SignupViewModel
-import kotlinx.coroutines.flow.collectLatest
+
 
 @Composable
 fun SignupScreen(
@@ -22,12 +23,14 @@ fun SignupScreen(
 ) {
     val uiState by viewModel.uiState.collectAsState()
 
+
     // Auto-navigate on success
     LaunchedEffect(uiState.success) {
         if (uiState.success) {
             onSignupSuccess()
         }
     }
+
 
     Column(
         modifier = Modifier
@@ -42,7 +45,9 @@ fun SignupScreen(
             fontSize = 28.sp
         )
 
+
         Spacer(Modifier.height(40.dp))
+
 
         OutlinedTextField(
             value = uiState.name,
@@ -53,7 +58,9 @@ fun SignupScreen(
             isError = uiState.errorMessage?.contains("Name", ignoreCase = true) == true
         )
 
+
         Spacer(Modifier.height(12.dp))
+
 
         OutlinedTextField(
             value = uiState.email,
@@ -65,7 +72,9 @@ fun SignupScreen(
             isError = uiState.errorMessage?.contains("Email", ignoreCase = true) == true
         )
 
+
         Spacer(Modifier.height(12.dp))
+
 
         OutlinedTextField(
             value = uiState.phone,
@@ -76,7 +85,9 @@ fun SignupScreen(
             singleLine = true
         )
 
+
         Spacer(Modifier.height(12.dp))
+
 
         OutlinedTextField(
             value = uiState.password,
@@ -89,7 +100,9 @@ fun SignupScreen(
             isError = uiState.errorMessage?.contains("Password", ignoreCase = true) == true
         )
 
+
         Spacer(Modifier.height(12.dp))
+
 
         OutlinedTextField(
             value = uiState.confirmPassword,
@@ -102,6 +115,7 @@ fun SignupScreen(
             isError = uiState.errorMessage?.contains("match", ignoreCase = true) == true
         )
 
+
         uiState.errorMessage?.let { msg ->
             Spacer(Modifier.height(12.dp))
             Text(
@@ -111,7 +125,9 @@ fun SignupScreen(
             )
         }
 
+
         Spacer(Modifier.height(32.dp))
+
 
         Button(
             onClick = { viewModel.signup() },
@@ -130,7 +146,9 @@ fun SignupScreen(
             }
         }
 
+
         Spacer(Modifier.height(24.dp))
+
 
         Row(
             verticalAlignment = Alignment.CenterVertically,
@@ -143,3 +161,6 @@ fun SignupScreen(
         }
     }
 }
+
+
+

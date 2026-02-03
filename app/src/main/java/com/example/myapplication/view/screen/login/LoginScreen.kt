@@ -1,6 +1,7 @@
 package com.example.myapplication.ui.screens
-
+import android.graphics.Color
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Email
@@ -16,7 +17,6 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.myapplication.viewmodel.LoginViewModel
-
 @Composable
 fun LoginScreen(
     onLoginSuccess: () -> Unit,
@@ -27,6 +27,7 @@ fun LoginScreen(
     // Collecting state from ViewModel
     val uiState by viewModel.uiState.collectAsState()
 
+
     // Side effect: Navigate when login is successful
     LaunchedEffect(uiState.success) {
         if (uiState.success) {
@@ -34,7 +35,9 @@ fun LoginScreen(
         }
     }
 
+
     Surface(
+
         modifier = Modifier.fillMaxSize(),
         color = MaterialTheme.colorScheme.background
     ) {
@@ -57,7 +60,9 @@ fun LoginScreen(
                 color = MaterialTheme.colorScheme.outline
             )
 
+
             Spacer(modifier = Modifier.height(40.dp))
+
 
             // Email Field
             OutlinedTextField(
@@ -71,7 +76,9 @@ fun LoginScreen(
                 keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Email)
             )
 
+
             Spacer(modifier = Modifier.height(16.dp))
+
 
             // Password Field
             OutlinedTextField(
@@ -85,6 +92,7 @@ fun LoginScreen(
                 keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password)
             )
 
+
             // Error Message Display
             if (uiState.errorMessage != null) {
                 Spacer(modifier = Modifier.height(8.dp))
@@ -96,7 +104,9 @@ fun LoginScreen(
                 )
             }
 
+
             Spacer(modifier = Modifier.height(32.dp))
+
 
             Box(
                 modifier = Modifier.fillMaxWidth(),
@@ -117,39 +127,46 @@ fun LoginScreen(
             // Login Button
             Button(
                 onClick = { viewModel.login() },
+                shape = MaterialTheme.shapes.medium,
                 modifier = Modifier
                     .fillMaxWidth()
-                    .height(50.dp),
-                shape = MaterialTheme.shapes.medium,
-                enabled = !uiState.isLoading // Disable button while loading
+                    .height(60.dp),
+                enabled = !uiState.isLoading
+
             ) {
+
+
                 if (uiState.isLoading) {
                     CircularProgressIndicator(
                         modifier = Modifier.size(24.dp),
                         color = MaterialTheme.colorScheme.onPrimary,
                         strokeWidth = 2.dp
+
                     )
                 } else {
-                    Text("Login", fontSize = 16.sp, fontWeight = FontWeight.SemiBold)
+                    Text("Login")
                 }
+
             }
 
-            Spacer(modifier = Modifier.height(16.dp))
+            Spacer(modifier = Modifier.height(20.dp))
 
-            // Footer / Signup Link
             Row(
-                verticalAlignment = Alignment.CenterVertically,
-                horizontalArrangement = Arrangement.Center
+                horizontalArrangement = Arrangement.Center,
+                verticalAlignment = Alignment.CenterVertically
             ) {
-                Text("Don't have an account?")
-                TextButton(onClick = onSignupClick) {
-                    Text(
-                        "Sign Up",
-                        color = MaterialTheme.colorScheme.primary,
-                        fontWeight = FontWeight.Bold
-                    )
+                Text("If not have Account")
+                TextButton(
+                    onClick = onSignupClick
+                ) {
+                    Text("Sign Up")
                 }
+
             }
+
         }
     }
 }
+
+
+
