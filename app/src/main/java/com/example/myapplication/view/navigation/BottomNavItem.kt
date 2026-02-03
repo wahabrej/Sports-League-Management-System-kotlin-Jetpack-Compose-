@@ -10,7 +10,9 @@ sealed class BottomNavItem(
     val icon: ImageVector
 ) {
     object Home : BottomNavItem(Routes.HOME, "Home", Icons.Default.Home)
+
     // টাইটেল 'Favorite' থেকে পরিবর্তন করে 'Matches' করা হয়েছে এবং আইকন পরিবর্তন করা হয়েছে
     object AllMatch : BottomNavItem(Routes.AllMATCHSCREEN, "Matches", Icons.Default.DateRange)
+    object PlayerScreen : BottomNavItem(Routes.PLAYER, "Player", Icons.Default.Person)
     object Profile : BottomNavItem(Routes.PROFILE, "Profile", Icons.Default.Person)
 }

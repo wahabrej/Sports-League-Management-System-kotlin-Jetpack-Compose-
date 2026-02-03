@@ -1,5 +1,4 @@
 package com.example.myapplication.viewmodel
-
 import android.content.ContentValues.TAG
 import android.util.Log
 import androidx.lifecycle.ViewModel

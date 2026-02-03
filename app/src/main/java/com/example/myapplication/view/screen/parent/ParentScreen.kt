@@ -1,5 +1,4 @@
 package com.example.myapplication.ui.screens
-
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
@@ -31,6 +30,7 @@ fun ParentScreen(
     val items = listOf(
         BottomNavItem.Home,
         BottomNavItem.AllMatch,
+        BottomNavItem.PlayerScreen,
         BottomNavItem.Profile
     )
 
@@ -74,6 +74,11 @@ fun ParentScreen(
                 AllMatchScreen(
                     viewModel = matchViewModel,
                     onMatchClick = { matchId -> onNavigateToDetail(matchId) }
+                )
+            }
+            composable(Routes.PLAYER) {
+                PlayerScreen(
+
                 )
             }
             composable(Routes.PROFILE) {
