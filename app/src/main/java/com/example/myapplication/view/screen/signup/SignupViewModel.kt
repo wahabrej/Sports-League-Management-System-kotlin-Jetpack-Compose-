@@ -11,6 +11,7 @@ import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import java.io.IOException
 
+
 data class SignupUiState(
     val name: String = "",
     val email: String = "",
@@ -22,9 +23,11 @@ data class SignupUiState(
     val success: Boolean = false
 )
 
+
 class SignupViewModel : ViewModel() {
     private val _uiState = MutableStateFlow(SignupUiState())
     val uiState = _uiState.asStateFlow()
+
 
     fun updateName(name: String) = _uiState.update { it.copy(name = name) }
     fun updateEmail(email: String) = _uiState.update { it.copy(email = email) }
@@ -32,9 +35,11 @@ class SignupViewModel : ViewModel() {
     fun updatePassword(password: String) = _uiState.update { it.copy(password = password) }
     fun updateConfirmPassword(cp: String) = _uiState.update { it.copy(confirmPassword = cp) }
 
+
     fun signup() {
         val current = _uiState.value
         Log.d(TAG, "Signup started for email: ${current.email}")
+
 
         viewModelScope.launch {
             _uiState.update { it.copy(isLoading = true, errorMessage = null) }
@@ -46,7 +51,9 @@ class SignupViewModel : ViewModel() {
                     phone = current.phone
                 )
 
+
                 val response = RetrofitClient.api.register(request)
+
 
                 if (response.isSuccessful) {
                     Log.d(TAG, "Signup Successful! Code: ${response.code()}")
@@ -57,6 +64,7 @@ class SignupViewModel : ViewModel() {
                     _uiState.update { it.copy(isLoading = false, errorMessage = "Error: ${response.code()}") }
                 }
 
+
             } catch (e: Exception) {
                 Log.e(TAG, "Fatal Exception: ${e.message}")
                 e.printStackTrace() // পুরো স্ট্যাক ট্রেস প্রিন্ট করবে
@@ -65,3 +73,4 @@ class SignupViewModel : ViewModel() {
         }
     }
 }
+
