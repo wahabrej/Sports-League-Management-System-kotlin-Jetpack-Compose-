@@ -1,5 +1,3 @@
-package com.example.myapplication.ui.screens
-
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
@@ -11,7 +9,6 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.myapplication.viewmodel.PlayerTab
 import com.example.myapplication.viewmodel.PlayerViewModel
-
 @Composable
 fun PlayerScreen(
     viewModel: PlayerViewModel = viewModel()
@@ -59,7 +56,7 @@ fun PlayerScreen(
 
         Spacer(modifier = Modifier.height(16.dp))
 
-        // ✅ Player List
+        //  Player List
         LazyColumn(
             modifier = Modifier.fillMaxSize()
         ) {

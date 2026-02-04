@@ -1,4 +1,5 @@
 package com.example.myapplication.ui.screens
+import PlayerScreen
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
@@ -64,6 +65,7 @@ fun ParentScreen(
             startDestination = Routes.HOME,
             modifier = Modifier.padding(padding)
         ) {
+
             composable(Routes.HOME) {
                 HomeScreen(
                     viewModel = homeViewModel,
