@@ -1,5 +1,4 @@
 package com.example.myapplication.viewmodel
-
 import OtpRequest
 import ResetPasswordRequest
 import androidx.lifecycle.ViewModel
@@ -9,7 +8,6 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
-
 data class AuthUiState(
     val email: String = "",
     val isLoading: Boolean = false,

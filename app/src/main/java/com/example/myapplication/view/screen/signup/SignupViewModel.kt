@@ -9,9 +9,6 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
-import java.io.IOException
-
-
 data class SignupUiState(
     val name: String = "",
     val email: String = "",
@@ -44,6 +41,8 @@ class SignupViewModel : ViewModel() {
         viewModelScope.launch {
             _uiState.update { it.copy(isLoading = true, errorMessage = null) }
             try {
+
+
                 val request = SignupRequest(
                     name = current.name.trim(),
                     email = current.email.trim(),
@@ -58,7 +57,8 @@ class SignupViewModel : ViewModel() {
                 if (response.isSuccessful) {
                     Log.d(TAG, "Signup Successful! Code: ${response.code()}")
                     _uiState.update { it.copy(isLoading = false, success = true) }
-                } else {
+                }
+                else {
                     val errorBody = response.errorBody()?.string()
                     Log.e(TAG, "Server Error: $errorBody | Code: ${response.code()}")
                     _uiState.update { it.copy(isLoading = false, errorMessage = "Error: ${response.code()}") }
@@ -67,7 +67,7 @@ class SignupViewModel : ViewModel() {
 
             } catch (e: Exception) {
                 Log.e(TAG, "Fatal Exception: ${e.message}")
-                e.printStackTrace() // পুরো স্ট্যাক ট্রেস প্রিন্ট করবে
+                e.printStackTrace() //
                 _uiState.update { it.copy(isLoading = false, errorMessage = "Connection Failed!") }
             }
         }

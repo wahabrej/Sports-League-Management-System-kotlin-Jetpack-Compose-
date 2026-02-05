@@ -13,11 +13,10 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-
 @Composable
 fun OtpSendScreen(
     onSendOtpClick: (String) -> Unit,
-    onNavigateBackToLogin: () -> Unit, // নেভিগেশন ল্যাম্বডা
+    onNavigateBackToLogin: () -> Unit,
     isLoading: Boolean = false
 ) {
     var email by remember { mutableStateOf("") }
@@ -66,7 +65,6 @@ fun OtpSendScreen(
                 singleLine = true,
                 shape = RoundedCornerShape(12.dp)
             )
-
             // --- Align Right Link যোগ করা হয়েছে ---
             Box(
                 modifier = Modifier.fillMaxWidth(),
